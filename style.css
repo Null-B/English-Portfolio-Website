@@ -1,0 +1,115 @@
+html {
+  scroll-behavior: smooth !important;
+}
+
+/* Custom Cursor */
+.cursor {
+  position: fixed;              /* stays relative to viewport */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #000000;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%); /* center the circle on the pointer */
+  pointer-events: none;         /* never blocks clicks */
+  z-index: 9999;                /* above navbar/sections */
+  transition: width 250ms, height 250ms;
+}
+.cursor.large {
+  width: 70px;
+  height: 70px;
+}
+
+
+section {
+  scroll-margin-top: 80px; /* match your navbar height */
+}
+
+:root {
+  --sapphire: #4059ad;
+  --blue-gray: #6b9ac4;
+  --tiffany-blue: #97d8c4;
+  --antiflash-white: #eff2f1;
+  --xanthous: #f4b942;
+}
+
+/* Bulma Overrides */
+.navbar {
+  background-color: var(--sapphire);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.navbar .brand-text {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--antiflash-white);
+}
+
+/* Navbar links */
+.navbar .nav-link {
+  color: var(--antiflash-white);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+}
+
+/* Hover effect: background + subtle scale */
+.navbar .nav-link:hover {
+  background-color: var(--blue-gray);
+  color: var(--antiflash-white);
+  transform: translateY(-2px);
+}
+
+/* Active link (when clicked or selected) */
+.navbar .nav-link.is-active {
+  background-color: var(--xanthous);
+  color: var(--sapphire);
+}
+
+.hero.is-info::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.2); /* halbtransparentes Schwarz */
+  z-index: 0;
+}
+
+.hero.is-info {
+  background: url("Assests/web_zuerich_polyterrasse_1280x960px_27990.jpg") center center / cover no-repeat fixed;
+  position: relative;
+  color: var(--antiflash-white);
+}
+
+.hero-body {
+  position: relative;
+  z-index: 1; /* Text bleibt über Overlay sichtbar */
+}
+
+
+.button.is-primary {
+  background-color: var(--sapphire);
+  color: var(--antiflash-white);
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.button.is-primary:hover {
+  background-color: var(--blue-gray); /* or use a darker sapphire */
+  color: var(--antiflash-white);
+}
+
+.section {
+  background-color: var(--antiflash-white);
+}
+
+.box {
+  border-left: 5px solid var(--xanthous);
+  background-color: var(--tiffany-blue);
+}
+
+.footer {
+  background-color: var(--sapphire);
+  color: var(--antiflash-white);
+}
