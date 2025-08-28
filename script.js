@@ -15,7 +15,6 @@ links.forEach(link => {
 
 const container = document.getElementById("entries-container");
 
-// Load entries.json
 fetch("entries.json")
   .then(response => response.json())
   .then(entries => {
@@ -23,7 +22,7 @@ fetch("entries.json")
       fetch(entry.file)
         .then(response => response.text())
         .then(markdown => {
-          // 🔹 Fix image paths: prepend "Entries/" if missing
+          // Fix image paths
           markdown = markdown.replace(/!\[(.*?)\]\((.*?)\)/g, (match, alt, src) => {
             if (!src.startsWith("http") && !src.includes("Entries/")) {
               return `![${alt}](Entries/${src})`;
@@ -34,19 +33,37 @@ fetch("entries.json")
           // Convert markdown → HTML
           let html = marked.parse(markdown);
 
-          // 🔹 Wrap images with style
-          html = html.replace(
-            /<img(.*?)>/g,
-            `<img$1 style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); margin-top: 10px; max-width: 100%; height: auto;">`
-          );
-
-          // Create and append box
+          // Create entry box
           const box = document.createElement("div");
           box.classList.add("box");
-          box.innerHTML = `<div class="content">${html}</div>`;
+
+          // Get the first heading (# Week 1) as the title
+          const matchHeading = html.match(/<h1.*?>(.*?)<\/h1>/);
+          const title = matchHeading ? matchHeading[1] : "Untitled Entry";
+
+          // Remove first <h1> from content so it doesn’t duplicate
+          html = html.replace(/<h1.*?>.*?<\/h1>/, "");
+
+          // Collapsible structure
+          box.innerHTML = `
+            <div class="entry-header" style="cursor:pointer; font-weight:600; font-size:1.3rem; margin-bottom:0.5rem;">
+              ${title} ⯆
+            </div>
+            <div class="entry-content content" style="display:none; margin-top:0.75rem;">
+              ${html}
+            </div>
+          `;
+
+          // Toggle expand/collapse on click
+          const header = box.querySelector(".entry-header");
+          const content = box.querySelector(".entry-content");
+          header.addEventListener("click", () => {
+            const isHidden = content.style.display === "none";
+            content.style.display = isHidden ? "block" : "none";
+            header.innerHTML = `${title} ${isHidden ? "⯅" : "⯆"}`;
+          });
+
           container.appendChild(box);
-        })
-        .catch(err => console.error("Error loading markdown:", entry.file, err));
+        });
     });
-  })
-  .catch(err => console.error("Error loading entries.json:", err));
+  });
