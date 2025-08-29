@@ -71,10 +71,10 @@ fetch("entries.json")
 
           // Collapsible structure
           box.innerHTML = `
-            <div class="entry-header" style="cursor:pointer; font-weight:600; font-size:1.3rem; margin-bottom:0.5rem;">
+            <div class="entry-header" style="cursor:pointer; font-weight:600; font-size:1.2rem; margin-bottom:0.8rem;">
               ${title} ⯆
             </div>
-            <div class="entry-content content" style="display:none; margin-top:0.75rem;">
+            <div class="entry-content content" style="display:none; font-size:0.8rem; margin-top:0.75rem;">
               ${html}
             </div>
           `;

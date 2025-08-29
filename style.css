@@ -2,41 +2,6 @@ html {
   scroll-behavior: smooth !important;
 }
 
-.cursor {
-  position: fixed;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid var(--xanthous);
-  background: transparent;     /* soft sapphire fill */
-  left: 0;
-  top: 0;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 9999;
-  transition: width 250ms, height 250ms, background 250ms, border-color 250ms;
-  box-shadow: 0 0 15px rgba(244, 185, 66, 0.6); /* glowing yellow halo */
-}
-
-.cursor.large {
-  width: 70px;
-  height: 70px;
-  background: rgba(244, 185, 66, 0.25);
-  box-shadow: 0 0 25px rgba(244, 185, 66, 0.8);
-}
-
-
-
-section {
-  scroll-margin-top: 80px; /* match your navbar height */
-}
-
-p {
-  font-size: 1.25rem;  /* bigger than default (16px → ~20px) */
-  line-height: 1.7;    /* keeps readability */
-}
-
-
 :root {
   --sapphire: #4059ad;
   --blue-gray: #6b9ac4;
@@ -44,6 +9,81 @@ p {
   --antiflash-white: #eff2f1;
   --xanthous: #f4b942;
 }
+
+.container,
+.section,
+.hero,
+.footer {
+  padding-left: 6vw;
+  padding-right: 6vw;
+}
+
+section {
+  scroll-margin-top: 80px; /* match your navbar height */
+}
+
+.section {
+  background-color: var(--antiflash-white);
+}
+
+p {
+  font-size: 1rem;  /* bigger than default (16px → ~20px) */
+  line-height: 1.7;    /* keeps readability */
+}
+
+.entry-content {
+  color: #222 !important;  /* Dark readable text */
+}
+
+
+/* -------------- HERO ----------- */
+
+.hero.is-info::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.2); /* halbtransparentes Schwarz */
+  backdrop-filter: blur(1.5px);
+  z-index: 0;
+}
+
+.Hero-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--antiflash-white);
+}
+
+.Hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--antiflash-white);
+  margin-top: 0.5rem;
+}
+
+.hero.is-info {
+  background: url("Assests/web_zuerich_polyterrasse_1280x960px_27990.jpg") center center / cover no-repeat fixed;
+  position: relative;
+  color: var(--antiflash-white);
+}
+
+.hero-body {
+  position: relative;
+  z-index: 1; /* Text bleibt über Overlay sichtbar */
+}
+
+
+/* Footer */
+
+.footer {
+  background-color: var(--sapphire);
+  color: var(--antiflash-white);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+
 
 /* Bulma Overrides */
 .navbar {
@@ -53,7 +93,7 @@ p {
 
 .navbar .brand-text {
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1rem;
   color: var(--antiflash-white);
 }
 
@@ -79,38 +119,37 @@ p {
   color: var(--sapphire);
 }
 
-.hero.is-info::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.2); /* halbtransparentes Schwarz */
-  backdrop-filter: blur(1.5px);
-  z-index: 0;
+/* -------------- ------- ----------- */
+/* -------------- Miscs ----------- */
+/* -------------- ------ ----------- */
+
+
+.cursor {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--xanthous);
+  background: transparent;     /* soft sapphire fill */
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 250ms, height 250ms, background 250ms, border-color 250ms;
+  box-shadow: 0 0 15px rgba(244, 185, 66, 0.6); /* glowing yellow halo */
 }
 
-.Hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: var(--antiflash-white);
+.cursor.large {
+  width: 70px;
+  height: 70px;
+  background: rgba(244, 185, 66, 0.25);
+  box-shadow: 0 0 25px rgba(244, 185, 66, 0.8);
 }
 
-.Hero-subtitle {
-  font-size: 1.8rem;
-  color: var(--antiflash-white);
-  margin-top: 0.5rem;
-}
 
-.hero.is-info {
-  background: url("Assests/web_zuerich_polyterrasse_1280x960px_27990.jpg") center center / cover no-repeat fixed;
-  position: relative;
-  color: var(--antiflash-white);
-}
 
-.hero-body {
-  position: relative;
-  z-index: 1; /* Text bleibt über Overlay sichtbar */
-}
-
+/* -------------- BUTTON ----------- */
 
 .button.is-primary {
   background-color: var(--sapphire);
@@ -124,21 +163,9 @@ p {
   color: var(--antiflash-white);
 }
 
-.section {
-  background-color: var(--antiflash-white);
-}
+/* -------------- More ----------- */
 
 .box {
   border-left: 5px solid var(--xanthous);
   background-color: var(--tiffany-blue);
-}
-
-.entry-content {
-  color: #222 !important;  /* Dark readable text */
-}
-
-
-.footer {
-  background-color: var(--sapphire);
-  color: var(--antiflash-white);
 }
