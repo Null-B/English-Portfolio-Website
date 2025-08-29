@@ -169,3 +169,29 @@ p {
   border-left: 5px solid var(--xanthous);
   background-color: var(--tiffany-blue);
 }
+
+
+/* ============= Mobile ================= */
+@media (max-width: 600px) {
+  .container,
+  .section,
+  .hero,
+  .footer {
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+  .Hero-title {
+    font-size: 2rem;
+  }
+  .Hero-subtitle {
+    font-size: 1.1rem;
+  }
+  .navbar .nav-link {
+    padding: 0.5rem 0.5rem;
+    font-size: 1rem;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
