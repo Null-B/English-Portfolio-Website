@@ -1,17 +1,37 @@
 const cursor = document.querySelector(".cursor");
-const links = document.querySelectorAll(".navbar a, .nav-link, nav a, h1"); // covers your Bulma navbar
+const links = document.querySelectorAll(".navbar a, .nav-link, nav a, h1, [role='button']"); // covers your Bulma navbar
 
-// Follow the mouse using viewport coordinates
+// Target and actual positions
+let mouseX = 0, mouseY = 0;
+let currentX = 0, currentY = 0;
+
+// Update target position on mouse move
 document.addEventListener("mousemove", (e) => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top  = e.clientY + "px";
+  mouseX = e.clientX;
+  mouseY = e.clientY;
 });
 
-// Grow/shrink when hovering nav links
+
+// Animation loop (lerp)
+function animateCursor() {
+  currentX += (mouseX - currentX) * 0.15; // 0.15 = speed factor
+  currentY += (mouseY - currentY) * 0.15;
+
+  cursor.style.left = currentX + "px";
+  cursor.style.top  = currentY + "px";
+
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+
+// Grow/shrink on hover
 links.forEach(link => {
   link.addEventListener("mouseenter", () => cursor.classList.add("large"));
   link.addEventListener("mouseleave", () => cursor.classList.remove("large"));
 });
+
+// ======================================
 
 const container = document.getElementById("entries-container");
 
@@ -43,6 +63,11 @@ fetch("entries.json")
 
           // Remove first <h1> from content so it doesn’t duplicate
           html = html.replace(/<h1.*?>.*?<\/h1>/, "");
+
+          // Skip if entry has no proper title
+          if (title === "Untitled Entry") {
+            return;
+          }
 
           // Collapsible structure
           box.innerHTML = `

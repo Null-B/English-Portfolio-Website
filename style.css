@@ -2,34 +2,40 @@ html {
   scroll-behavior: smooth !important;
 }
 
-/* Custom Cursor */
 .cursor {
-  position: fixed;              /* stays relative to viewport */
+  position: fixed;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 2px solid #000000;
+  border: 2px solid var(--xanthous);
+  background: transparent;     /* soft sapphire fill */
   left: 0;
   top: 0;
-  transform: translate(-50%, -50%); /* center the circle on the pointer */
-  pointer-events: none;         /* never blocks clicks */
-  z-index: 9999;                /* above navbar/sections */
-  transition: width 250ms, height 250ms;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 250ms, height 250ms, background 250ms, border-color 250ms;
+  box-shadow: 0 0 15px rgba(244, 185, 66, 0.6); /* glowing yellow halo */
 }
+
 .cursor.large {
   width: 70px;
   height: 70px;
+  background: rgba(244, 185, 66, 0.25);
+  box-shadow: 0 0 25px rgba(244, 185, 66, 0.8);
 }
+
 
 
 section {
   scroll-margin-top: 80px; /* match your navbar height */
 }
 
-.entry-content p {
-  font-size: 1.2rem;   /* adjust to taste (1rem = 16px) */
-  line-height: 1.7;    /* better readability */
+p {
+  font-size: 1.25rem;  /* bigger than default (16px → ~20px) */
+  line-height: 1.7;    /* keeps readability */
 }
+
 
 :root {
   --sapphire: #4059ad;
@@ -78,7 +84,20 @@ section {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.2); /* halbtransparentes Schwarz */
+  backdrop-filter: blur(1.5px);
   z-index: 0;
+}
+
+.Hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--antiflash-white);
+}
+
+.Hero-subtitle {
+  font-size: 1.8rem;
+  color: var(--antiflash-white);
+  margin-top: 0.5rem;
 }
 
 .hero.is-info {
