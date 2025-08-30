@@ -171,6 +171,17 @@ p {
 }
 
 
+/* Make Markdown images responsive */
+.entry-content img {
+  max-width: 40%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;  /* centers them and adds spacing */
+  border-radius: 8px; /* optional nice rounded edges */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* optional subtle shadow */
+}
+
+
 /* ============= Mobile ================= */
 @media (max-width: 600px) {
   .container,

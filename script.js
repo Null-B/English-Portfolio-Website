@@ -43,9 +43,11 @@ fetch("entries.json")
         .then(response => response.text())
         .then(markdown => {
           // Fix image paths
+          const entryDir = entry.file.substring(0, entry.file.lastIndexOf("/"));
+
           markdown = markdown.replace(/!\[(.*?)\]\((.*?)\)/g, (match, alt, src) => {
             if (!src.startsWith("http") && !src.includes("Entries/")) {
-              return `![${alt}](Entries/${src})`;
+              return `![${alt}](${entryDir}/${src})`;
             }
             return match;
           });
