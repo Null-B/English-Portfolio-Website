@@ -1,15 +1,15 @@
 [
-  { "file": "Entries/Portfolio-1.md" },
-  { "file": "Entries/Portfolio-2.md" },
-  { "file": "Entries/Portfolio-3.md" },
-  { "file": "Entries/Portfolio-4.md" },
-  { "file": "Entries/Portfolio-5.md" },
-  { "file": "Entries/Portfolio-6.md" },
-  { "file": "Entries/Portfolio-7.md" },
-  { "file": "Entries/Portfolio-8.md" },
-  { "file": "Entries/Portfolio-9.md" },
-  { "file": "Entries/Portfolio-10.md" },
-  { "file": "Entries/Portfolio-11.md" },
-  { "file": "Entries/Portfolio-12.md" },
-  { "file": "Entries/Portfolio-13.md" }
+  { "file": "Entries/Port1/Portfolio-1.md" },
+  { "file": "Entries/Port2/Portfolio-2.md" },
+  { "file": "Entries/Port3/Portfolio-3.md" },
+  { "file": "Entries/Port4/Portfolio-4.md" },
+  { "file": "Entries/Port5/Portfolio-5.md" },
+  { "file": "Entries/Port6/Portfolio-6.md" },
+  { "file": "Entries/Port7/Portfolio-7.md" },
+  { "file": "Entries/Port8/Portfolio-8.md" },
+  { "file": "Entries/Port9/Portfolio-9.md" },
+  { "file": "Entries/Port10/Portfolio-10.md" },
+  { "file": "Entries/Port11/Portfolio-11.md" },
+  { "file": "Entries/Port12/Portfolio-12.md" },
+  { "file": "Entries/Port13/Portfolio-13.md" }
 ]
