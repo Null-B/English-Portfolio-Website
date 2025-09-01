@@ -243,3 +243,4 @@ const sectionObserver = new IntersectionObserver(
 
 animatedSections.forEach((sec) => sectionObserver.observe(sec));
 
+
