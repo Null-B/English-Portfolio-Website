@@ -1,5 +1,5 @@
 const cursor = document.querySelector(".cursor");
-const links = document.querySelectorAll(".navbar a, .nav-link, nav a, h1, [role='button']"); // covers your Bulma navbar
+const links = document.querySelectorAll(".navbar a, .nav-link, nav a, h1, [role='button']");
 
 // Target and actual positions
 let mouseX = 0, mouseY = 0;
@@ -11,10 +11,9 @@ document.addEventListener("mousemove", (e) => {
   mouseY = e.clientY;
 });
 
-
 // Animation loop (lerp)
 function animateCursor() {
-  currentX += (mouseX - currentX) * 0.15; // 0.15 = speed factor
+  currentX += (mouseX - currentX) * 0.15;
   currentY += (mouseY - currentY) * 0.15;
 
   cursor.style.left = currentX + "px";
@@ -24,7 +23,6 @@ function animateCursor() {
 }
 animateCursor();
 
-
 // Grow/shrink on hover
 links.forEach(link => {
   link.addEventListener("mouseenter", () => cursor.classList.add("large"));
@@ -32,7 +30,8 @@ links.forEach(link => {
 });
 
 // ======================================
-
+// Portfolio Entries
+// ======================================
 const container = document.getElementById("entries-container");
 
 fetch("entries.json")
@@ -42,9 +41,9 @@ fetch("entries.json")
       fetch(entry.file)
         .then(response => response.text())
         .then(markdown => {
-          // Fix image paths
           const entryDir = entry.file.substring(0, entry.file.lastIndexOf("/"));
 
+          // Fix relative image paths
           markdown = markdown.replace(/!\[(.*?)\]\((.*?)\)/g, (match, alt, src) => {
             if (!src.startsWith("http") && !src.includes("Entries/")) {
               return `![${alt}](${entryDir}/${src})`;
@@ -52,26 +51,20 @@ fetch("entries.json")
             return match;
           });
 
-          // Convert markdown → HTML
           let html = marked.parse(markdown);
-
-          // Create entry box
-          const box = document.createElement("div");
-          box.classList.add("box");
 
           // Get the first heading (# Week 1) as the title
           const matchHeading = html.match(/<h1.*?>(.*?)<\/h1>/);
           const title = matchHeading ? matchHeading[1] : "Untitled Entry";
 
-          // Remove first <h1> from content so it doesn’t duplicate
+          // Remove first <h1> from content
           html = html.replace(/<h1.*?>.*?<\/h1>/, "");
 
-          // Skip if entry has no proper title
-          if (title === "Untitled Entry") {
-            return;
-          }
+          if (title === "Untitled Entry") return;
 
-          // Collapsible structure
+          // Collapsible entry box
+          const box = document.createElement("div");
+          box.classList.add("box");
           box.innerHTML = `
             <div class="entry-header" style="cursor:pointer; font-weight:600; font-size:1.2rem; margin-bottom:0.8rem;">
               ${title} ⯆
@@ -81,7 +74,6 @@ fetch("entries.json")
             </div>
           `;
 
-          // Toggle expand/collapse on click
           const header = box.querySelector(".entry-header");
           const content = box.querySelector(".entry-content");
           header.addEventListener("click", () => {
@@ -95,13 +87,12 @@ fetch("entries.json")
     });
   });
 
-// Lightbox functionality
-
-// ================== LIGHTBOX FEATURE ==================
+// ======================================
+// Lightbox
+// ======================================
 document.addEventListener("click", (e) => {
   const target = e.target;
 
-  // Only trigger if an entry image is clicked
   if (target.tagName === "IMG" && target.closest(".entry-content")) {
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.querySelector(".lightbox-img");
@@ -109,31 +100,67 @@ document.addEventListener("click", (e) => {
 
     lightbox.style.display = "flex";
     lightboxImg.src = target.src;
+    lightboxImg.alt = target.alt || "Expanded image";
 
-    // Close when clicking the X
-    lightboxClose.onclick = () => {
+    const closeLightbox = () => {
       lightbox.style.display = "none";
       lightboxImg.src = "";
+      lightboxImg.alt = "";
     };
 
-    // Close when clicking outside the image
+    lightboxClose.onclick = closeLightbox;
     lightbox.onclick = (ev) => {
-      if (ev.target === lightbox) {
-        lightbox.style.display = "none";
-        lightboxImg.src = "";
-      }
+      if (ev.target === lightbox) closeLightbox();
     };
+
+    // Close on Escape key
+    document.addEventListener("keydown", (ev) => {
+      if (ev.key === "Escape") closeLightbox();
+    }, { once: true });
   }
 });
 
-
-// ================== VERTICAL SCROLL PROGRESS BAR ==================
+// ======================================
+// Scroll Progress Bar + Navbar Highlight
+// ======================================
 window.addEventListener("scroll", () => {
   const progressBar = document.getElementById("progress-bar");
+  const container = document.getElementById("progress-container");
+  const hero = document.querySelector(".hero");
 
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const scrollPercent = (scrollTop / docHeight) * 100;
+  const heroHeight = hero.offsetHeight;
 
+  // --- Progress bar calculation ---
+  const rawScrollTop = window.scrollY; // unadjusted
+  const scrollTop = rawScrollTop - heroHeight; // adjusted for bar
+  const docHeight = Math.max(
+    1,
+    document.documentElement.scrollHeight - window.innerHeight - heroHeight
+  ); // avoid /0
+
+  const scrollPercent = Math.max(0, (scrollTop / docHeight) * 100);
+
+  // Grow the bar
   progressBar.style.height = scrollPercent + "%";
+
+  // Reveal ticks up to the same height
+  container.style.setProperty("--progress", scrollPercent + "%");
+
+  // --- Navbar highlight ---
+  const sections = document.querySelectorAll("section");
+  let current = "";
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100; // adjust for navbar height
+    if (rawScrollTop >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  document.querySelectorAll(".nav-link").forEach(link => {
+    link.classList.remove("is-active");
+    if (link.getAttribute("href") === `#${current}`) {
+      link.classList.add("is-active");
+    }
+  });
 });
+

@@ -1,122 +1,124 @@
 html {
-  scroll-behavior: smooth !important;
+scroll-behavior: smooth !important;
 }
 
 :root {
-  --sapphire: #4059ad;
-  --blue-gray: #6b9ac4;
-  --tiffany-blue: #97d8c4;
-  --antiflash-white: #eff2f1;
-  --xanthous: #f4b942;
+--sapphire: #4059ad;
+--blue-gray: #6b9ac4;
+--tiffany-blue: #97d8c4;
+--antiflash-white: #eff2f1;
+--xanthous: #f4b942;
 }
 
 .container,
 .section,
 .hero,
 .footer {
-  padding-left: 6vw;
-  padding-right: 6vw;
+padding-left: 6vw;
+padding-right: 6vw;
 }
 
 section {
-  scroll-margin-top: 80px; /* match your navbar height */
+scroll-margin-top: 80px; /* match your navbar height */
 }
 
 .section {
-  background-color: var(--antiflash-white);
+background-color: var(--antiflash-white);
 }
 
 p {
-  font-size: 1rem;  /* bigger than default (16px → ~20px) */
-  line-height: 1.7;    /* keeps readability */
+font-size: 1rem;  /* bigger than default (16px → ~20px) */
+line-height: 1.7;    /* keeps readability */
 }
 
 .entry-content {
-  color: #222 !important;  /* Dark readable text */
+color: #222 !important;  /* Dark readable text */
 }
 
 
 /* -------------- HERO ----------- */
 
 .hero.is-info::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.2); /* halbtransparentes Schwarz */
-  backdrop-filter: blur(1.5px);
-  z-index: 0;
+content: "";
+position: absolute;
+inset: 0;
+background: rgba(0,0,0,0.2); /* halbtransparentes Schwarz */
+backdrop-filter: blur(1.5px);
+z-index: 0;
 }
 
 .Hero-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--antiflash-white);
+font-size: 2rem;
+font-weight: 700;
+color: var(--antiflash-white);
 }
 
 .Hero-subtitle {
-  font-size: 1.1rem;
-  color: var(--antiflash-white);
-  margin-top: 0.5rem;
+font-size: 1.1rem;
+color: var(--antiflash-white);
+margin-top: 0.5rem;
 }
 
 .hero.is-info {
-  background: url("Assests/web_zuerich_polyterrasse_1280x960px_27990.jpg") center center / cover no-repeat fixed;
-  position: relative;
-  color: var(--antiflash-white);
+position: relative;
+overflow: hidden; /* prevents overlay issues */
+background: url("Assests/web_zuerich_polyterrasse_1280x960px_27990.jpg") center center / cover no-repeat fixed;
+position: relative;
+color: var(--antiflash-white);
 }
 
 .hero-body {
-  position: relative;
-  z-index: 1; /* Text bleibt über Overlay sichtbar */
+position: relative;
+z-index: 1; /* Text bleibt über Overlay sichtbar */
 }
 
 
 /* Footer */
 
 .footer {
-  background-color: var(--sapphire);
-  color: var(--antiflash-white);
+background-color: var(--sapphire);
+color: var(--antiflash-white);
 }
 
 .footer p {
-  margin: 0;
-  font-size: 0.8rem;
+margin: 0;
+font-size: 0.8rem;
 }
 
 
 
 /* Bulma Overrides */
 .navbar {
-  background-color: var(--sapphire);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+background-color: var(--sapphire);
+box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .navbar .brand-text {
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--antiflash-white);
+font-weight: 700;
+font-size: 1rem;
+color: var(--antiflash-white);
 }
 
 /* Navbar links */
 .navbar .nav-link {
-  color: var(--antiflash-white);
-  font-weight: 500;
-  transition: all 0.3s ease;
-  padding: 0.75rem 1rem;
-  border-radius: 6px;
+color: var(--antiflash-white);
+font-weight: 500;
+transition: background-color 0.3s ease, color 0.3s ease;
+padding: 0.75rem 1rem;
+border-radius: 6px;
 }
 
 /* Hover effect: background + subtle scale */
 .navbar .nav-link:hover {
-  background-color: var(--blue-gray);
-  color: var(--antiflash-white);
-  transform: translateY(-2px);
+background-color: var(--blue-gray);
+color: var(--antiflash-white);
+transform: translateY(-2px);
 }
 
 /* Active link (when clicked or selected) */
 .navbar .nav-link.is-active {
-  background-color: var(--xanthous);
-  color: var(--sapphire);
+background-color: var(--xanthous);
+color: var(--sapphire);
 }
 
 /* -------------- ------- ----------- */
@@ -125,26 +127,26 @@ p {
 
 
 .cursor {
-  position: fixed;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid var(--xanthous);
-  background: transparent;     /* soft sapphire fill */
-  left: 0;
-  top: 0;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 11000;
-  transition: width 250ms, height 250ms, background 250ms, border-color 250ms;
-  box-shadow: 0 0 15px rgba(244, 185, 66, 0.6); /* glowing yellow halo */
+position: fixed;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+border: 2px solid var(--xanthous);
+background: transparent;     /* soft sapphire fill */
+left: 0;
+top: 0;
+transform: translate(-50%, -50%);
+pointer-events: none;
+z-index: 11000;
+transition: width 250ms, height 250ms, background 250ms, border-color 250ms;
+box-shadow: 0 0 15px rgba(244, 185, 66, 0.6); /* glowing yellow halo */
 }
 
 .cursor.large {
-  width: 70px;
-  height: 70px;
-  background: rgba(244, 185, 66, 0.25);
-  box-shadow: 0 0 25px rgba(244, 185, 66, 0.8);
+width: 70px;
+height: 70px;
+background: rgba(244, 185, 66, 0.25);
+box-shadow: 0 0 25px rgba(244, 185, 66, 0.8);
 }
 
 
@@ -152,133 +154,147 @@ p {
 /* -------------- BUTTON ----------- */
 
 .button.is-primary {
-  background-color: var(--sapphire);
-  color: var(--antiflash-white);
-  border: none;
-  transition: background-color 0.3s ease;
+background-color: var(--sapphire);
+color: var(--antiflash-white);
+border: none;
+transition: background-color 0.3s ease;
 }
 
 .button.is-primary:hover {
-  background-color: var(--blue-gray); /* or use a darker sapphire */
-  color: var(--antiflash-white);
+background-color: var(--blue-gray); /* or use a darker sapphire */
+color: var(--antiflash-white);
 }
 
 /* -------------- More ----------- */
 
 .box {
-  border-left: 5px solid var(--xanthous);
-  background-color: var(--tiffany-blue);
+border-left: 5px solid var(--xanthous);
+background-color: var(--tiffany-blue);
 }
 
 
 /* Make Markdown images responsive */
 .entry-content img {
-  max-width: 40%;
-  height: auto;
-  display: block;
-  margin: 1rem auto;  /* centers them and adds spacing */
-  border-radius: 8px; /* optional nice rounded edges */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* optional subtle shadow */
+max-width: 40%;
+height: auto;
+display: block;
+margin: 1rem auto;  /* centers them and adds spacing */
+border-radius: 8px; /* optional nice rounded edges */
+box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* optional subtle shadow */
 }
 
 
 /* ================== LIGHTBOX ================== */
 .lightbox {
-  display: none; /* hidden by default */
-  position: fixed;
-  z-index: 10000;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  justify-content: center;
-  align-items: center;
+display: none; /* hidden by default */
+position: fixed;
+z-index: 10000;
+inset: 0;
+background: rgba(0,0,0,0.85);
+justify-content: center;
+align-items: center;
 }
 
 .lightbox-img {
-  max-width: 90%;
-  max-height: 80%;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-  animation: zoomIn 0.3s ease;
+max-width: 90%;
+max-height: 80%;
+border-radius: 12px;
+box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+animation: zoomIn 0.3s ease;
 }
 
 .lightbox-close {
-  position: absolute;
-  top: 20px;
-  right: 40px;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #fff;
-  cursor: pointer;
-  transition: color 0.2s ease;
+position: absolute;
+top: 20px;
+right: 40px;
+font-size: 2rem;
+font-weight: bold;
+color: #fff;
+cursor: pointer;
+transition: color 0.2s ease;
 }
 
 .lightbox-close:hover {
-  color: var(--xanthous);
+color: var(--xanthous);
 }
 
 /* Smooth pop-in animation */
 @keyframes zoomIn {
-  from { transform: scale(0.8); opacity: 0; }
-  to   { transform: scale(1); opacity: 1; }
+from { transform: scale(0.8); opacity: 0; }
+to   { transform: scale(1); opacity: 1; }
 }
 
 
 /* ================== VERTICAL SCROLL PROGRESS BAR ================== */
-#progress-bar {
+/* The track container */
+#progress-container {
   position: fixed;
   top: 0;
   left: 0;
-  width: 8px;               /* thickness of the bar */
-  height: 0%;               /* grows with scroll */
-  background: var(--xanthous);
+  width: 20px;       /* bar + tick space */
+  height: 100vh;
   z-index: 12000;
-  transition: height 0.1s ease-out;
-  box-shadow: 2px 0 6px rgba(0,0,0,0.3);
-  border-radius: 0 4px 4px 0;
+  pointer-events: none;
 }
 
-/* Tick marks beside the bar */
-#progress-bar::after {
-  content: "";
-  position: fixed;
+/* The growing bar */
+#progress-bar {
+  position: absolute;
   top: 0;
-  left: 12px;               /* a little to the right of the bar */
-  width: 12px;
-  height: 100vh;            /* full viewport height */
+  left: 0;
+  width: 5px;        /* thickness of the bar */
+  height: 0%;        /* grows with scroll (set by JS) */
+  background: var(--xanthous);
+  box-shadow: 2px 0 6px rgba(0,0,0,0.3);
+  transition: height 0.1s ease-out;
+}
+
+/* Ticks (stationary) */
+#progress-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0px;        /* offset so ticks appear next to bar */
+  width: 10px;
+  height: 100%;
   background: repeating-linear-gradient(
     to bottom,
     transparent,
-    transparent 24.9%,   /* space before tick */
-    black 25%,           /* tick line */
-    black 25.5%,         /* tick thickness */
-    transparent 25.6%    /* continue clear */
+    transparent 14.9%,
+    black 15%,          /* tick line */
+    black 15.5%,        /* tick thickness */
+    transparent 15.6%
   );
-  pointer-events: none;     /* don’t block clicks */
+  mask-image: linear-gradient(to bottom, black 0%, black var(--progress, 0%), transparent var(--progress, 0%));
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black var(--progress, 0%), transparent var(--progress, 0%));
 }
 
 
 
 /* ============= Mobile ================= */
 @media (max-width: 600px) {
-  .container,
-  .section,
-  .hero,
-  .footer {
-    padding-left: 2vw;
-    padding-right: 2vw;
-  }
-  .Hero-title {
-    font-size: 2rem;
-  }
-  .Hero-subtitle {
-    font-size: 1.1rem;
-  }
-  .navbar .nav-link {
-    padding: 0.5rem 0.5rem;
-    font-size: 1rem;
-  }
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+.container,
+.section,
+.hero,
+.footer {
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+.Hero-title {
+  font-size: 2rem;
+}
+.Hero-subtitle {
+  font-size: 1.1rem;
+}
+.navbar .nav-link {
+  padding: 0.5rem 0.5rem;
+  font-size: 1rem;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.cursor {
+  display: none;
+}
 }
