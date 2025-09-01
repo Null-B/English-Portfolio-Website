@@ -164,3 +164,26 @@ window.addEventListener("scroll", () => {
   });
 });
 
+// ================== LIGHT / DARK MODE TOGGLE ==================
+const toggleBtn = document.getElementById("theme-toggle");
+const root = document.documentElement;
+
+// Apply saved theme on load
+if (localStorage.getItem("theme") === "dark") {
+  root.classList.add("dark-mode");
+  toggleBtn.textContent = "☀️ Light";
+} else {
+  toggleBtn.textContent = "🌙 Dark";
+}
+
+toggleBtn.addEventListener("click", () => {
+  if (root.classList.contains("dark-mode")) {
+    root.classList.remove("dark-mode");
+    localStorage.setItem("theme", "light");
+    toggleBtn.textContent = "🌙 Dark";
+  } else {
+    root.classList.add("dark-mode");
+    localStorage.setItem("theme", "dark");
+    toggleBtn.textContent = "☀️ Light";
+  }
+});

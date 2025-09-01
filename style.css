@@ -10,6 +10,90 @@ scroll-behavior: smooth !important;
 --xanthous: #f4b942;
 }
 
+
+/* 🌙 Dark Mode */
+html.dark-mode {
+  --sapphire: #121826;       /* Deep navy background */
+  --blue-gray: #2b3448;      /* Cards / boxes */
+  --tiffany-blue: #3baea0;   /* Accent teal */
+  --antiflash-white: #1c1f26;/* Page background */
+  --xanthous: #f4b400;       /* Warm yellow accent */
+  color: #e5e5e5;
+  background-color: var(--antiflash-white);
+}
+
+/* General body text */
+html.dark-mode body {
+  background-color: var(--antiflash-white);
+  color: #e5e5e5;
+}
+
+/* Navbar */
+html.dark-mode .navbar {
+  background-color: var(--sapphire);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+html.dark-mode .navbar a.nav-link {
+  color: #e5e5e5;
+}
+
+html.dark-mode .navbar a.nav-link.is-active {
+  color: var(--xanthous);
+}
+
+html.dark-mode .brand-text {
+  color: #e5e5e5;
+}
+
+/* Boxes / cards */
+html.dark-mode .box {
+  background-color: var(--blue-gray);
+  border-left: 4px solid var(--xanthous);
+  color: #e5e5e5;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+}
+
+/* Footer */
+html.dark-mode .footer {
+  background-color: var(--sapphire);
+  color: #e5e5e5;
+  border-top: 1px solid #2e3a4d;
+}
+
+/* Headings & paragraphs in dark mode */
+html.dark-mode h1,
+html.dark-mode h2
+html.dark-mode h3 {
+  color: #7cb9ff !important; /* bright text */
+}
+
+html.dark-mode p,
+html.dark-mode span,
+html.dark-mode li {
+  color: #e5e5e5 !important; /* bright text */
+}
+
+/* Hero text */
+html.dark-mode .hero {
+  background: url("Assests/ETH_Zürich_im_Abendlicht.jpg") center/cover no-repeat;
+  color: #e5e5e5 !important;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6); /* readability */
+}
+
+/* Hero headings */
+html.dark-mode .hero h1,
+html.dark-mode .hero h2,
+html.dark-mode .hero h3 {
+  color: #ffffff !important;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.8);
+}
+
+html, body, .navbar, .hero, .box, .footer {
+  transition: background-color 0.3s ease, color 0.3s ease, background-image 0.3s ease;
+}
+
+
 .container,
 .section,
 .hero,
