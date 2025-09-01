@@ -187,3 +187,59 @@ toggleBtn.addEventListener("click", () => {
     toggleBtn.textContent = "☀️ Light";
   }
 });
+
+
+// ================== BACK TO TOP BUTTON ==================
+const backToTopBtn = document.getElementById("back-to-top");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTopBtn.style.display = "flex";
+    backToTopBtn.style.opacity = "1";
+  } else {
+    backToTopBtn.style.opacity = "0";
+    setTimeout(() => {
+      if (window.scrollY <= 300) backToTopBtn.style.display = "none";
+    }, 300); // wait for fade-out
+  }
+});
+
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+// // ================== GSAP SECTION ANIMATIONS ==================
+// gsap.utils.toArray(".section-animate").forEach((section) => {
+//   gsap.from(section, {
+//     scrollTrigger: {
+//       trigger: section,
+//       start: "top 85%", // when section is near viewport
+//       toggleActions: "play none none none"
+//     },
+//     opacity: 0,
+//     y: 50,
+//     duration: 0.8,
+//     ease: "power2.out"
+//   });
+// });
+
+// ================== SECTION ANIMATIONS ==================
+const animatedSections = document.querySelectorAll(".section-animate");
+
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        sectionObserver.unobserve(entry.target); // animate once
+      }
+    });
+  },
+  { threshold: 0.15 } // trigger when ~15% visible
+);
+
+animatedSections.forEach((sec) => sectionObserver.observe(sec));
+

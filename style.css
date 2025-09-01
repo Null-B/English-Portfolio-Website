@@ -309,6 +309,35 @@ to   { transform: scale(1); opacity: 1; }
 }
 
 
+/* ================== BACK TO TOP BUTTON ================== */
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: var(--xanthous);
+  color: black;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none; /* hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 13000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: opacity 0.8s, transform 0.8s;
+}
+
+#back-to-top:hover {
+  transform: scale(1.1);
+  background: #f1c24c; /* lighter shade on hover */
+}
+
+
+
+
 /* ================== VERTICAL SCROLL PROGRESS BAR ================== */
 /* The track container */
 #progress-container {
@@ -381,4 +410,18 @@ img {
 .cursor {
   display: none;
 }
+}
+
+
+/* ================== SECTION ANIMATIONS ================== */
+.section-animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+.section-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
