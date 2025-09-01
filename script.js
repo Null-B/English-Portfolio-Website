@@ -94,3 +94,46 @@ fetch("entries.json")
         });
     });
   });
+
+// Lightbox functionality
+
+// ================== LIGHTBOX FEATURE ==================
+document.addEventListener("click", (e) => {
+  const target = e.target;
+
+  // Only trigger if an entry image is clicked
+  if (target.tagName === "IMG" && target.closest(".entry-content")) {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.querySelector(".lightbox-img");
+    const lightboxClose = document.querySelector(".lightbox-close");
+
+    lightbox.style.display = "flex";
+    lightboxImg.src = target.src;
+
+    // Close when clicking the X
+    lightboxClose.onclick = () => {
+      lightbox.style.display = "none";
+      lightboxImg.src = "";
+    };
+
+    // Close when clicking outside the image
+    lightbox.onclick = (ev) => {
+      if (ev.target === lightbox) {
+        lightbox.style.display = "none";
+        lightboxImg.src = "";
+      }
+    };
+  }
+});
+
+
+// ================== VERTICAL SCROLL PROGRESS BAR ==================
+window.addEventListener("scroll", () => {
+  const progressBar = document.getElementById("progress-bar");
+
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
+
+  progressBar.style.height = scrollPercent + "%";
+});

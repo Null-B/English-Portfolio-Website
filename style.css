@@ -135,7 +135,7 @@ p {
   top: 0;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  z-index: 9999;
+  z-index: 11000;
   transition: width 250ms, height 250ms, background 250ms, border-color 250ms;
   box-shadow: 0 0 15px rgba(244, 185, 66, 0.6); /* glowing yellow halo */
 }
@@ -180,6 +180,82 @@ p {
   border-radius: 8px; /* optional nice rounded edges */
   box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* optional subtle shadow */
 }
+
+
+/* ================== LIGHTBOX ================== */
+.lightbox {
+  display: none; /* hidden by default */
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  animation: zoomIn 0.3s ease;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.lightbox-close:hover {
+  color: var(--xanthous);
+}
+
+/* Smooth pop-in animation */
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+
+/* ================== VERTICAL SCROLL PROGRESS BAR ================== */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;               /* thickness of the bar */
+  height: 0%;               /* grows with scroll */
+  background: var(--xanthous);
+  z-index: 12000;
+  transition: height 0.1s ease-out;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.3);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Tick marks beside the bar */
+#progress-bar::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 12px;               /* a little to the right of the bar */
+  width: 12px;
+  height: 100vh;            /* full viewport height */
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 24.9%,   /* space before tick */
+    black 25%,           /* tick line */
+    black 25.5%,         /* tick thickness */
+    transparent 25.6%    /* continue clear */
+  );
+  pointer-events: none;     /* don’t block clicks */
+}
+
 
 
 /* ============= Mobile ================= */
