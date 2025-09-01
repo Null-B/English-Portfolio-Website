@@ -1,22 +1,4 @@
 # Protfolio 1 Summer Description
-
-Course: ENG (https://www.notion.so/ENG-2543e4837bf781e1a545e3c0ad5cd55d?pvs=21)
-Confidence: Low
-Notifications: 🔔 Notifications (https://www.notion.so/Notifications-2543e4837bf78107a835d283faba623c?pvs=21)
-Times reviewed: 0
-
-<aside>
-
-</aside>
-
-<aside>
-
-**Set confidence:**
-
-</aside>
-
----
-
 I had a really fun summer! There was always something to do, and it felt full and lively. I never once felt bored or like I had nothing going on. At the same time, my summer felt short. I really miss the long summers we used to have—especially the three-month breaks I had as a kid in Macedonia.
 
 ![shared image (7).jpg](shared_image_(7).jpg)
