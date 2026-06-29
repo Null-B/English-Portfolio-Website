@@ -1,3 +1,5 @@
+# Protfolio 7 Tech Article
+
 https://www.bbc.com/worklife/article/20260520-how-social-media-ceased-to-be-social
 
 I read this article from the BBC about how social media has slowly changed from a platform where we interacted to a video and entertainment platform where users only go to spend time and watch content.

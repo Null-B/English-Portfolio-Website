@@ -1,4 +1,4 @@
-#  Entry #6: Work Updates
+# Protfolio 6 Work Updates
 
 **How is your apprenticeship going in your second year so far?**
 

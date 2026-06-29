@@ -1,3 +1,4 @@
+# Protfolio 5 Best of 2025
 1. Have you heard any albums from Pitchfork’s Best Albums of 2025 list? What did you think?
 Yes. I recognized a few artists from the list, like Bad Bunny, Sudan Archives, FKA twigs, and MIKE. I wasn’t familiar with most of the albums before, but the ones I listened to had different styles — some were cool, some were weird. I liked the ones that had stronger beats and rhythms. Pitchfork
 
